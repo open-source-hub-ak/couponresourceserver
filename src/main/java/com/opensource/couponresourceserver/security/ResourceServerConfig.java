@@ -20,8 +20,9 @@ import com.opensource.couponresourceserver.util.SecurityConstants;
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-	@Value("${publicKey}")
-	private String publicKey;
+	/*
+	 * @Value("${publicKey}") private String publicKey;
+	 */
 
 	// which resource it is protecting;
 	@Override
@@ -39,7 +40,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 				.anyRequest().denyAll().and().csrf().disable();
 	}
 
-//	 resource server will verify token using public key
+//	 resource server will verify token using public key only when ther eis public key in app.props
+//commenting this as we getting public key from auth server
+	/*
 	@Bean
 	public TokenStore tokenStore() {
 		return new JwtTokenStore(jwtAccessTokenConverter());
@@ -51,5 +54,5 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
 		jwtAccessTokenConverter.setVerifierKey(publicKey);
 		return jwtAccessTokenConverter;
-	}
+	}*/
 }
