@@ -3,3 +3,5 @@ keytool -genkeypair -alias jwtiscool -keyalg RSA -keypass jwtiscool -keystore jw
 keytool -list -rfc --keystore jwtiscool.jks | openssl x509 -inform pem -pubkey
 
 keytool -list -rfc -alias jwtiscool -storepass jwtiscool -keystore jwtiscool.jks
+
+keytool -export -alias jwtiscool -keystore jwtiscool.jks -file public.pem
